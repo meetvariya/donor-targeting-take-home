@@ -180,6 +180,79 @@ make test   # a few quick checks
 `data/requests/`. `make features` adds `data/warehouse/features.parquet`. Everyone works from
 the same snapshot, so your numbers will match ours.
 
+## Implemented Service
+
+The submission's design and limitations are in [DESIGN.md](DESIGN.md). Recorded end-to-end
+resource evidence is in [evidence/benchmark.json](evidence/benchmark.json); temporal policy
+results are in [evidence/policy_evaluation.json](evidence/policy_evaluation.json).
+The final rebuilt image also passed [evidence/benchmark_final.json](evidence/benchmark_final.json),
+which includes dependency versions and source fingerprints. The complete test suite has 31 tests.
+Benchmark "passed" means timely CRM delivery with unique, snapshot-active IDs, not a simulator
+score for donations or churn. Business estimates are historical replay results in the policy
+report; the unavailable simulator's expected outcomes for the 12 new emails are not known here.
+
+After `make all`, start the local service with one command:
+
+```bash
+docker compose up --build
+```
+
+This enforces 2 GiB RAM and four CPUs and binds the API to `http://localhost:8000`.
+Docker Desktop with Linux containers/WSL2 is required on Windows. Offline training uses the
+development machine; it is not executed by the constrained request worker.
+
+Without Make, use these commands from the project root (PowerShell works):
+
+```bash
+uv sync
+uv run python -m donor_targeting.download_data
+uv run python -m donor_targeting.features
+uv run python -m donor_targeting.train
+uv run python -m donor_targeting.baseline
+uv run python -m donor_targeting.policy --reports evidence
+uv run python -m donor_targeting.serving_features
+uv run pytest -q
+docker compose up --build
+```
+
+Compose's default bearer token, `local-demo-token-change-before-deploy`, is public and only
+for this loopback-only mock. Set `DONOR_API_TOKEN` to a private value of at least 16 characters
+before exposing a deployment. Do not commit secrets or include them in AI records.
+
+Submit the supplied example from PowerShell:
+
+```powershell
+$headers = @{ Authorization = 'Bearer local-demo-token-change-before-deploy' }
+$body = Get-Content examples/requests/2003_clean_water.json -Raw
+Invoke-RestMethod -Method Post -Uri http://localhost:8000/audiences -Headers $headers -ContentType application/json -Body $body
+Invoke-RestMethod -Uri http://localhost:8000/requests/req_2003 -Headers $headers
+```
+
+Use the configured token instead when overriding the default. POST returns 202 with a status
+URL; poll until `succeeded`, `failed` or `delivery_unknown`. Success includes the CRM list ID,
+member count, versioned snapshot/policy and measured receipt-to-CRM time. Equal request IDs
+and payloads reuse the result; different payloads using an existing ID return 409. More than
+three pending jobs are rejected with 429 before acceptance. Admission and status require auth;
+`/healthz` is public and `/readyz` is authenticated.
+
+Demo mode deliberately uses the supplied September request clock. Requests before the snapshot
+or at least 24 hours beyond it are rejected. The static warehouse does not contain same-day
+consent changes. Prepare and restart after each new completed warehouse refresh; changed source
+files make the running service reject new work. The single-instance SQLite job store is not
+a distributed Render queue.
+
+Run the actual HTTP replay and separate 250k-member capacity case inside the constrained service:
+
+```bash
+docker compose exec -T api /app/.venv/bin/python -m donor_targeting.benchmark --capacity
+```
+
+This writes fresh benchmark IDs, validates every emitted CSV/metadata pair, tests a 12-request
+burst, and records cgroup peak memory in `evidence/benchmark.json`. Synthetic capacity outputs
+stay under `data/benchmark/`, separate from the evaluator's `data/crm_outbox/`. Job/audience
+retention is seven days, purged at startup; unresolved CRM imports require reconciliation.
+Stop the local service with `docker compose down` without deleting persistent state.
+
 ## How we measure your list
 
 The data comes from a simulator, so for any list we know the donations and unsubscribes it would

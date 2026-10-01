@@ -1,0 +1,14 @@
+.venv
+.git
+.env
+.env.*
+data
+models
+reports
+evidence
+ai_sessions
+tests
+**/__pycache__
+*.pyc
+.pytest_cache
+.ruff_cache

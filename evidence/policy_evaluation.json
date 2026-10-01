@@ -1,0 +1,288 @@
+{
+  "policy": {
+    "ranking": "centroid",
+    "fraction": 0.75,
+    "feature_version": 1,
+    "model_sha256": "ebf74b810b53126a471eae85e20c2fa41ed050549cff6a84e9709aea4550ac4b",
+    "development_period": "2026-07-01 <= sent_at < 2026-08-01",
+    "guardrail": "July point estimates retain >=100% BAU donors and dollars",
+    "fallback": "approved BAU if no development candidate passes; never unknown eligibility",
+    "release_decision": "July winner failed August gate; use original fixed centroid 75% reference",
+    "version": "65895a4479d24a83"
+  },
+  "historical_all_data_diagnostic": {
+    "emailed_fraction": 0.7497333333333334,
+    "donation_precision": 0.012337720078250045,
+    "donors_kept_vs_bau": 1.0724637681159421,
+    "dollars_kept_vs_bau": 1.0721166097548545,
+    "unsubscribes_avoided_vs_bau": 0.012345679012345734
+  },
+  "development": {
+    "n_sends": 12806,
+    "candidates": [
+      {
+        "fraction": 0.5,
+        "emailed_fraction": 0.4998438232078713,
+        "donation_precision": 0.015310107795656929,
+        "donors_kept_vs_bau": 0.9267139479905437,
+        "dollars_kept_vs_bau": 0.9661064764437995,
+        "unsubscribes_avoided_vs_bau": 0.3440285204991087
+      },
+      {
+        "fraction": 0.525,
+        "emailed_fraction": 0.524675933156333,
+        "donation_precision": 0.014734335466587289,
+        "donors_kept_vs_bau": 0.9361702127659575,
+        "dollars_kept_vs_bau": 0.9738443557812437,
+        "unsubscribes_avoided_vs_bau": 0.3226381461675579
+      },
+      {
+        "fraction": 0.55,
+        "emailed_fraction": 0.5497423082929876,
+        "donation_precision": 0.014488636363636363,
+        "donors_kept_vs_bau": 0.9645390070921986,
+        "dollars_kept_vs_bau": 0.9956071414178052,
+        "unsubscribes_avoided_vs_bau": 0.30124777183600715
+      },
+      {
+        "fraction": 0.575,
+        "emailed_fraction": 0.574730595033578,
+        "donation_precision": 0.013994565217391305,
+        "donors_kept_vs_bau": 0.9739952718676124,
+        "dollars_kept_vs_bau": 1.002861403296659,
+        "unsubscribes_avoided_vs_bau": 0.27985739750445626
+      },
+      {
+        "fraction": 0.6,
+        "emailed_fraction": 0.5997188817741683,
+        "donation_precision": 0.013411458333333333,
+        "donors_kept_vs_bau": 0.9739952718676124,
+        "dollars_kept_vs_bau": 1.002861403296659,
+        "unsubscribes_avoided_vs_bau": 0.21568627450980393
+      },
+      {
+        "fraction": 0.625,
+        "emailed_fraction": 0.6247852569108231,
+        "donation_precision": 0.013373328333958255,
+        "donors_kept_vs_bau": 1.011820330969267,
+        "dollars_kept_vs_bau": 1.027848305323822,
+        "unsubscribes_avoided_vs_bau": 0.1871657754010695
+      },
+      {
+        "fraction": 0.65,
+        "emailed_fraction": 0.6496954552553491,
+        "donation_precision": 0.012860576923076922,
+        "donors_kept_vs_bau": 1.011820330969267,
+        "dollars_kept_vs_bau": 1.027848305323822,
+        "unsubscribes_avoided_vs_bau": 0.16577540106951882
+      },
+      {
+        "fraction": 0.675,
+        "emailed_fraction": 0.6745275652038107,
+        "donation_precision": 0.012502894188469553,
+        "donors_kept_vs_bau": 1.0212765957446808,
+        "dollars_kept_vs_bau": 1.0421956232619998,
+        "unsubscribes_avoided_vs_bau": 0.1515151515151515
+      },
+      {
+        "fraction": 0.7,
+        "emailed_fraction": 0.6995939403404654,
+        "donation_precision": 0.012501395245005023,
+        "donors_kept_vs_bau": 1.0591016548463357,
+        "dollars_kept_vs_bau": 1.0628299681618507,
+        "unsubscribes_avoided_vs_bau": 0.12299465240641716
+      },
+      {
+        "fraction": 0.725,
+        "emailed_fraction": 0.7246603154771201,
+        "donation_precision": 0.0125,
+        "donors_kept_vs_bau": 1.0969267139479906,
+        "dollars_kept_vs_bau": 1.0961995728045781,
+        "unsubscribes_avoided_vs_bau": 0.0802139037433155
+      },
+      {
+        "fraction": 0.75,
+        "emailed_fraction": 0.7497266906137748,
+        "donation_precision": 0.012394542235183836,
+        "donors_kept_vs_bau": 1.1252955082742317,
+        "dollars_kept_vs_bau": 1.114577036231008,
+        "unsubscribes_avoided_vs_bau": 0.051693404634581164
+      },
+      {
+        "fraction": 0.775,
+        "emailed_fraction": 0.7747149773543651,
+        "donation_precision": 0.012196351174276787,
+        "donors_kept_vs_bau": 1.1442080378250592,
+        "dollars_kept_vs_bau": 1.1286019425301255,
+        "unsubscribes_avoided_vs_bau": -0.026737967914438387
+      },
+      {
+        "fraction": 0.8,
+        "emailed_fraction": 0.7996251756988911,
+        "donation_precision": 0.012109375,
+        "donors_kept_vs_bau": 1.1725768321513004,
+        "dollars_kept_vs_bau": 1.1542336678354088,
+        "unsubscribes_avoided_vs_bau": -0.07664884135472372
+      }
+    ],
+    "chosen": {
+      "fraction": 0.625,
+      "emailed_fraction": 0.6247852569108231,
+      "donation_precision": 0.013373328333958255,
+      "donors_kept_vs_bau": 1.011820330969267,
+      "dollars_kept_vs_bau": 1.027848305323822,
+      "unsubscribes_avoided_vs_bau": 0.1871657754010695
+    }
+  },
+  "frozen_july_candidate": {
+    "policy": {
+      "ranking": "model",
+      "fraction": 0.625,
+      "feature_version": 1,
+      "model_sha256": "ebf74b810b53126a471eae85e20c2fa41ed050549cff6a84e9709aea4550ac4b",
+      "development_period": "2026-07-01 <= sent_at < 2026-08-01",
+      "guardrail": "July point estimates retain >=100% BAU donors and dollars",
+      "fallback": "approved BAU if no development candidate passes; never unknown eligibility"
+    },
+    "august": {
+      "metrics": {
+        "emailed_fraction": 0.6246614061947945,
+        "donation_precision": 0.015648567119155354,
+        "donors_kept_vs_bau": 0.9793510324483776,
+        "dollars_kept_vs_bau": 0.9584231598398522,
+        "unsubscribes_avoided_vs_bau": 0.2514619883040936
+      },
+      "email_bootstrap_95_percent": {
+        "donors_kept_vs_bau": [
+          0.856140350877193,
+          1.0815946348733234
+        ],
+        "dollars_kept_vs_bau": [
+          0.8188607048077516,
+          1.0692379804473016
+        ],
+        "unsubscribes_avoided_vs_bau": [
+          0.1527777777777778,
+          0.3335978835978834
+        ]
+      }
+    }
+  },
+  "final_august": {
+    "n_sends": 8491,
+    "n_emails": 6,
+    "n_donors": 113,
+    "metrics": {
+      "emailed_fraction": 0.7497350135437522,
+      "donation_precision": 0.013666352497643733,
+      "donors_kept_vs_bau": 1.0265486725663717,
+      "dollars_kept_vs_bau": 1.0220716558874858,
+      "unsubscribes_avoided_vs_bau": 0.11111111111111116
+    },
+    "email_bootstrap_95_percent": {
+      "donors_kept_vs_bau": [
+        0.9365079365079365,
+        1.1111479028697573
+      ],
+      "dollars_kept_vs_bau": [
+        0.8931159066022419,
+        1.1273397879207008
+      ],
+      "unsubscribes_avoided_vs_bau": [
+        0.04575163398692805,
+        0.1704040404040404
+      ]
+    },
+    "references": {
+      "BAU": {
+        "emailed_fraction": 0.75,
+        "donation_precision": 0.013308208691555764,
+        "donors_kept_vs_bau": 1.0,
+        "dollars_kept_vs_bau": 1.0,
+        "unsubscribes_avoided_vs_bau": 0.0
+      },
+      "engaged_last_30_days": {
+        "emailed_fraction": 0.7570368625603581,
+        "donation_precision": 0.014001244555071561,
+        "donors_kept_vs_bau": 1.0619469026548674,
+        "dollars_kept_vs_bau": 1.0495842315983985,
+        "unsubscribes_avoided_vs_bau": 0.11111111111111116
+      },
+      "centroid_top_75": {
+        "emailed_fraction": 0.7497350135437522,
+        "donation_precision": 0.013666352497643733,
+        "donors_kept_vs_bau": 1.0265486725663717,
+        "dollars_kept_vs_bau": 1.0220716558874858,
+        "unsubscribes_avoided_vs_bau": 0.11111111111111116
+      },
+      "centroid_top_50": {
+        "emailed_fraction": 0.4998233423625015,
+        "donation_precision": 0.016965127238454288,
+        "donors_kept_vs_bau": 0.8495575221238938,
+        "dollars_kept_vs_bau": 0.8229134585771481,
+        "unsubscribes_avoided_vs_bau": 0.4385964912280702
+      },
+      "model_top_75": {
+        "emailed_fraction": 0.7497350135437522,
+        "donation_precision": 0.014765944077913918,
+        "donors_kept_vs_bau": 1.1091445427728612,
+        "dollars_kept_vs_bau": 1.0883892824145365,
+        "unsubscribes_avoided_vs_bau": -0.005847953216374213
+      }
+    },
+    "program_areas": {
+      "mental_health": {
+        "n_sends": 1471,
+        "n_donors": 11,
+        "emailed_fraction": 0.7498300475866757,
+        "donation_precision": 0.007252946509519492,
+        "donors_kept_vs_bau": 0.9696969696969697,
+        "dollars_kept_vs_bau": 0.9216000000000001,
+        "unsubscribes_avoided_vs_bau": 0.1724137931034483
+      },
+      "hunger_relief": {
+        "n_sends": 1422,
+        "n_donors": 24,
+        "emailed_fraction": 0.749648382559775,
+        "donation_precision": 0.017823639774859287,
+        "donors_kept_vs_bau": 1.0555555555555556,
+        "dollars_kept_vs_bau": 1.0780901383311021,
+        "unsubscribes_avoided_vs_bau": 0.2727272727272728
+      },
+      "disaster_relief": {
+        "n_sends": 2826,
+        "n_donors": 49,
+        "emailed_fraction": 0.7498230714791224,
+        "donation_precision": 0.018876828692779613,
+        "donors_kept_vs_bau": 1.08843537414966,
+        "dollars_kept_vs_bau": 1.1199154780771263,
+        "unsubscribes_avoided_vs_bau": 0.09999999999999998
+      },
+      "climate_resilience": {
+        "n_sends": 1387,
+        "n_donors": 14,
+        "emailed_fraction": 0.7498197548666186,
+        "donation_precision": 0.008653846153846154,
+        "donors_kept_vs_bau": 0.8571428571428572,
+        "dollars_kept_vs_bau": 0.9868554095045501,
+        "unsubscribes_avoided_vs_bau": -0.019607843137254832
+      },
+      "education": {
+        "n_sends": 1385,
+        "n_donors": 15,
+        "emailed_fraction": 0.7494584837545126,
+        "donation_precision": 0.010597302504816955,
+        "donors_kept_vs_bau": 0.9777777777777777,
+        "dollars_kept_vs_bau": 0.7517401392111368,
+        "unsubscribes_avoided_vs_bau": 0.05882352941176461
+      }
+    }
+  },
+  "limitations": [
+    "Point-estimate guardrails do not establish revenue non-inferiority.",
+    "Only email-attributed gifts in the 7-day window are counted.",
+    "Historical replay estimates single-email outcomes, not long-term causal effects.",
+    "Program-area slices and email bootstrap have limited support in the small August sample.",
+    "The safety reference is adopted after the August release gate; its results are diagnostic, not independent confirmation."
+  ]
+}

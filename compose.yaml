@@ -1,0 +1,32 @@
+services:
+  api:
+    build: .
+    mem_limit: 2g
+    cpus: 4
+    init: true
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    tmpfs:
+      - /tmp:size=128m
+    ports:
+      - "127.0.0.1:${DONOR_PORT:-8000}:8000"
+    environment:
+      DONOR_API_TOKEN: "${DONOR_API_TOKEN:-local-demo-token-change-before-deploy}"
+      DONOR_CLOCK_MODE: demo
+    volumes:
+      - ./data/warehouse:/app/data/warehouse:ro
+      - ./data/requests:/app/data/requests:ro
+      - ./models:/app/models:ro
+      - ./data/serving:/app/data/serving
+      - ./data/service_state:/app/data/service_state
+      - ./data/crm_outbox:/app/data/crm_outbox
+      - ./data/benchmark:/app/data/benchmark
+      - ./evidence:/app/evidence
+    healthcheck:
+      test: [CMD, /app/.venv/bin/python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/healthz', timeout=2)"]
+      interval: 10s
+      timeout: 3s
+      start_period: 60s
+      retries: 3
+    stop_grace_period: 15s
